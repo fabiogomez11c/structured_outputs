@@ -1,0 +1,51 @@
+{
+  "$defs": {
+    "DateRange": {
+      "properties": {
+        "chain_of_thought": {
+          "description": "Think step by step to plan what is the best time range to search in",
+          "title": "Chain Of Thought",
+          "type": "string"
+        },
+        "start": {
+          "format": "date",
+          "title": "Start",
+          "type": "string"
+        },
+        "end": {
+          "format": "date",
+          "title": "End",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chain_of_thought",
+        "start",
+        "end"
+      ],
+      "title": "DateRange",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "rewritten_query": {
+      "description": "Rewrite the query to make it more specific",
+      "title": "Rewritten Query",
+      "type": "string"
+    },
+    "published_daterange": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/DateRange"
+        }
+      ],
+      "description": "Effective date range to search in"
+    }
+  },
+  "required": [
+    "rewritten_query",
+    "published_daterange"
+  ],
+  "title": "Query",
+  "type": "object"
+}
